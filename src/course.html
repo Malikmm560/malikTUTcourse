@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Make Web - Tutorial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #f8f9fa; /* light skin color */
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+        .logo {
+            height: 50px;
+        }
+        .logo-text {
+            font-family: 'Press Start 2P', 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+            font-size: 2em;
+            color: #000000;
+            letter-spacing: 2px;
+            margin-left: 8px;
+            user-select: none;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+        }
+        .topics {
+            list-style: decimal inside;
+            padding: 0;
+            margin: 30px 0;
+            font-size: 1.2em;
+        }
+        .topics li {
+            margin: 32px 0;      /* More space between steps */
+            line-height: 2;      /* More space inside each step */
+            padding: 12px 0;     /* Extra padding for comfort */
+        }
+        .photo-placeholder {
+            width: 300px;
+            height: 180px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 1.1em;
+            border-radius: 8px;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            padding: 32px 24px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .topics li {
+            margin: 44px 0;      /* Even more space between steps */
+            line-height: 2.2;    /* More space inside each step */
+            padding: 18px 0;     /* Extra padding for comfort */
+        }
+        .topics img {
+            display: block;
+            margin: 28px auto 0 auto; /* More space above images */
+            max-width: 120px;
+            max-height: 120px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .topics code, .topics b {
+            background: #f1f3f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            font-size: 1em;
+        }
+        .photo-placeholder {
+            width: 300px;
+            height: 180px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 1.1em;
+            border-radius: 8px;
+            margin-top: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        button[onclick^="document.getElementById('hint"] {
+            background: #ff69b4;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        button[onclick^="document.getElementById('hint"]:hover {
+            background: #e055a1;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-screen" style="
+        position:fixed;
+        top:0; left:0; right:0; bottom:0;
+        background:#fff;
+        z-index:9999;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-direction:column;
+        transition:opacity 0.5s;
+    ">
+        <img src="loadingscreen.gif" alt="Loading..." style="width:120px; height:120px;">
+        <div style="margin-top:18px; color:#888; font-size:1.2em;">Loading, please wait...</div>
+    </div>
+    <div class="header">
+        
+        <span class="logo-text">malikTUT</span>
+    </div>
+    <div class="main-content">
+        <div style="width:100%; max-width:600px; margin: 0 auto 24px auto;">
+            <button onclick="window.location.href='index.html'" style="
+                background: #ff69b4;
+                color: #fff;
+                border: none;
+                border-radius: 6px;
+                padding: 10px 24px;
+                font-size: 1em;
+                cursor: pointer;
+                margin-top: 24px;
+                margin-bottom: 8px;
+                transition: background 0.2s;
+                display: block;
+            ">← Back to Main</button>
+        </div>
+        <ol class="topics">
+            <li>
+                <b>Get VSCode 🚀</b><br>
+                Go to <a href="https://code.visualstudio.com/" target="_blank">https://code.visualstudio.com/</a> and download Visual Studio Code.<br>
+                <b>Why?</b> VSCode is a free and easy-to-use program made for writing code. It helps you make websites and see your files all in one place!<br>
+                Install it—just like you would any other app.<br>
+                <button onclick="document.getElementById('hint1').style.display='block'">Show Hint</button>
+                <div id="hint1" style="display:none; margin-top:10px; background:#f1f3f6; padding:10px; border-radius:6px;">
+                    Hint: You can also search "VSCode" on Google and click the first link!
+                </div>
+                <br>
+                <img src="https://code.visualstudio.com/assets/images/code-stable.png" alt="VSCode Screenshot" style="margin-top:10px;max-width:200px;border-radius:8px;">
+            </li>
+            <li>
+                <b>Make a Project Folder 📁</b><br>
+                On your computer, make a new folder (right-click on your Desktop or in your files and choose "New &gt; Folder"). Name it anything you want, like <b>mycoolweb</b>.<br>
+                <b>Why?</b> This folder keeps all your website files together so you don’t lose anything.<br>
+                <button onclick="document.getElementById('hint2').style.display='block'">Show Hint</button>
+                <div id="hint2" style="display:none; margin-top:10px; background:#f1f3f6; padding:10px; border-radius:6px;">
+                    Hint: Folders help you stay organized. You can make as many as you want for different projects!
+                </div>
+                <br>
+                <img src="https://img.icons8.com/fluency/96/folder-invoices.png" alt="Folder Example" style="margin-top:10px;max-width:120px;border-radius:8px;">
+            </li>
+            <li>
+                <b>Open Your Folder in VSCode 🖥️</b><br>
+                Open VSCode. At the top left, click <b>File</b>, then <b>Open Folder</b>. Find and select the folder you just made.<br>
+                <b>Why?</b> This lets VSCode show your project files on the left, so you can easily open and edit them.<br>
+                <button onclick="document.getElementById('hint3').style.display='block'">Show Hint</button>
+                <div id="hint3" style="display:none; margin-top:10px; background:#f1f3f6; padding:10px; border-radius:6px;">
+                    Hint: If you can't find your folder, check your Desktop or Documents!
+                </div>
+                <br>
+                <img src="https://code.visualstudio.com/assets/docs/editor/whyvscode/file-explorer.png" alt="VSCode Explorer" style="margin-top:10px;max-width:200px;border-radius:8px;">
+            </li>
+            <li>
+                <b>Add a "src" Folder 🗂️</b><br>
+                In VSCode, look at the left (Explorer). Click the <b>New Folder</b> icon and name it <b>src</b> (this stands for "source"—where your code lives).<br>
+                <b>Why?</b> Keeping your code in a <b>src</b> folder helps you stay organized, especially as your project grows.<br>
+                <button onclick="document.getElementById('hint4').style.display='block'">Show Hint</button>
+                <div id="hint4" style="display:none; margin-top:10px; background:#f1f3f6; padding:10px; border-radius:6px;">
+                    Hint: "src" is short for "source" and is a common name for code folders!
+                </div>
+                <br>
+                <img src="https://img.icons8.com/fluency/96/source-code.png" alt="Source Folder" style="margin-top:10px;max-width:120px;border-radius:8px;">
+            </li>
+            <li>
+                <b>Create Your First Files ✍️</b><br>
+                Click on the <b>src</b> folder to select it. Then click the <b>New File</b> icon and name it <b>index.html</b>. Do this again to make <b>index.css</b> and <b>main.js</b>.<br>
+                <b>Why?</b> <b>index.html</b> is your web page, <b>index.css</b> is for styles (colors, fonts), and <b>main.js</b> is for code that makes your page interactive.<br>
+                <button onclick="document.getElementById('hint5').style.display='block'">Show Hint</button>
+                <div id="hint5" style="display:none; margin-top:10px; background:#f1f3f6; padding:10px; border-radius:6px;">
+                    Hint: File names matter! Make sure you spell them exactly as shown.
+                </div>
+                <br>
+                <img src="https://img.icons8.com/fluency/96/document.png" alt="Files Example" style="margin-top:10px;max-width:120px;border-radius:8px;">
+            </li>
+            <li>
+                <b>Start Your HTML File! 💡</b><br>
+                Double-click <b>index.html</b> to open it. Type <b>!</b> (just the exclamation mark) and press <b>Enter</b> on your keyboard.<br>
+                <b>Why?</b> This shortcut gives you a ready-made HTML template, so you don’t have to type it all yourself.<br>
+                <button onclick="document.getElementById('hint6').style.display='block'">Show Hint</button>
+                <div id="hint6" style="display:none; margin-top:10px; background:#f1f3f6; padding:10px; border-radius:6px;">
+                    Hint: If nothing happens, make sure your cursor is inside the file and try again!
+                </div>
+                <br>
+                <img src="https://img.icons8.com/fluency/96/html-5.png" alt="HTML Icon" style="margin-top:10px;max-width:120px;border-radius:8px;">
+            </li>
+            <li>
+                <b>Add Something to the Page 📝</b><br>
+                In <b>index.html</b>, find the <code>&lt;body&gt;</code> section (it’s in the middle of the code). This is where you put things that show up on your website. Try typing:<br>
+                <code>&lt;button&gt;Click ME&lt;/button&gt;</code><br>
+                Save the file (press <b>Ctrl + S</b>).<br>
+                <b>Why?</b> The <code>&lt;body&gt;</code> is where all your visible content goes. Adding a button lets you see something on your page!<br>
+                <button onclick="document.getElementById('hint7').style.display='block'">Show Hint</button>
+                <div id="hint7" style="display:none; margin-top:10px; background:#f1f3f6; padding:10px; border-radius:6px;">
+                    Hint: You can add more elements like &lt;h1&gt;Hello!&lt;/h1&gt; or &lt;p&gt;Paragraph&lt;/p&gt; too!
+                </div>
+                <br>
+                <img src="https://img.icons8.com/fluency/96/button2.png" alt="Button Example" style="margin-top:10px;max-width:120px;border-radius:8px;">
+            </li>
+            <li>
+                <b>See Your Website 🌐</b><br>
+                You can't just "run" HTML in VSCode—you need a special extension!<br>
+                On the left side of VSCode, click the <b>Extensions</b> icon (it looks like four squares). In the search box, type <b>live server</b>. Look for the one with a pink WiFi symbol and click <b>Install</b>.<br>
+                Now, right-click <b>index.html</b> and choose <b>Open with Live Server</b>. Your website will open in your browser. 🎉<br>
+                <b>Why?</b> Live Server lets you see your website instantly in your browser every time you save your code.<br>
+                <button onclick="document.getElementById('hint8').style.display='block'">Show Hint</button>
+                <div id="hint8" style="display:none; margin-top:10px; background:#f1f3f6; padding:10px; border-radius:6px;">
+                    Hint: If you don't see "Open with Live Server," make sure the extension is installed!
+                </div>
+                <br>
+                <img src="https://img.icons8.com/fluency/96/wifi.png" alt="Live Server Icon" style="margin-top:10px;max-width:120px;border-radius:8px;">
+            </li>
+            <li>
+                <b>Make a Function in JavaScript 🧑‍💻</b><br>
+                Go to your <b>main.js</b> file (inside <b>src</b>). Type this code:<br>
+                <code>function example() {<br>&nbsp;&nbsp;alert('Hello, world!');<br>}</code><br>
+                <b>Why?</b> This makes a function called <b>example</b> that shows a pop-up. Functions let you do things when something happens on your page.<br>
+                <b>But wait!</b> If you just run your website now, nothing will happen. That’s because a function only runs when you tell it to. Next, you’ll connect your button to this function so it runs when you click!
+                <br><b>Let’s do more fun stuff next!</b><br>
+                <button onclick="document.getElementById('hint9').style.display='block'">Show Hint</button>
+                <div id="hint9" style="display:none; margin-top:10px; background:#f1f3f6; padding:10px; border-radius:6px;">
+                    Hint: You can change the message inside the alert to anything you want!
+                </div>
+                <br>
+                <img src="https://img.icons8.com/fluency/96/javascript.png" alt="JavaScript Icon" style="margin-top:10px;max-width:120px;border-radius:8px;">
+            </li>
+            <li>
+                <b>Connect Your Button to the Function 🔗</b><br>
+                Go back to <b>index.html</b>. Change your button code to this:<br>
+                <code>&lt;button onclick="example()"&gt;Click ME&lt;/button&gt;</code><br>
+                <b>Why?</b> This tells your button to run the <b>example</b> function when you click it. Now, clicking the button will show your pop-up!<br>
+                <button onclick="document.getElementById('hint10').style.display='block'">Show Hint</button>
+                <div id="hint10" style="display:none; margin-top:10px; background:#f1f3f6; padding:10px; border-radius:6px;">
+                    Hint: Make sure your <b>main.js</b> file is linked in your HTML with <code>&lt;script src="main.js"&gt;&lt;/script&gt;</code> before <code>&lt;/body&gt;</code>!
+                </div>
+                <br>
+                <img src="https://img.icons8.com/fluency/96/link.png" alt="Connect Icon" style="margin-top:10px;max-width:120px;border-radius:8px;">
+            </li>
+        </ol>
+        <div class="photo-placeholder">
+            Future Photo Here
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                const loading = document.getElementById('loading-screen');
+                loading.style.opacity = 0;
+                setTimeout(() => loading.style.display = 'none', 500);
+            }, 5000); // 5 seconds
+        };
+    </script>
+</body>
+</html>

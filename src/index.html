@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>course</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #f8f9fa;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 24px 32px 16px 32px;
+        }
+        .logo-text {
+            font-family: 'Press Start 2P', 'Comic Sans MS', cursive, sans-serif;
+            font-size: 2em;
+            color: #000000;
+            letter-spacing: 2px;
+            user-select: none;
+        }
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;      /* Center vertically */
+            min-height: 60vh;             /* Take up most of the page height */
+            margin-top: 0;                /* Remove top margin */
+        }
+        .search-bar {
+            width: 320px;
+            padding: 14px 18px;
+            border: 2px solid #313131;
+            border-radius: 8px;
+            font-size: 1.1em;
+            outline: none;
+            margin-bottom: 18px;
+            transition: border 0.2s;
+        }
+        .search-bar:focus {
+            border-color: #000000;
+        }
+        .course-select {
+            width: 220px;
+            padding: 10px 12px;
+            border: 2px solid #222222;
+            border-radius: 8px;
+            font-size: 1em;
+            background: #fff;
+            color: #333;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .course-select:focus {
+            border-color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-screen" style="
+        position:fixed;
+        top:0; left:0; right:0; bottom:0;
+        background:#fff;
+        z-index:9999;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-direction:column;
+        transition:opacity 0.5s;
+    ">
+        <img src="loadingscreen.gif" alt="Loading..." style="width:120px; height:120px;">
+        <div style="margin-top:18px; color:#888; font-size:1.2em;">Loading, please wait...</div>
+    </div>
+    <div class="header">
+        <span class="logo-text">malikTUT</span>
+    </div>
+    <div class="search-container">
+        <input class="search-bar" type="text" placeholder="Type to filter courses, then press Enter!">
+        <div id="dynamic-hint" style="color:#888; font-size:1em; margin-bottom:12px; min-height:1.5em;"></div>
+        <select class="course-select">
+            <option value="">Choose a course</option>
+            <option value="html">HTML Basics</option>
+            <option value="css"><strike>CSS Styling (coming soon)</strike></option>
+            <option value="js"><strike>JavaScript Fun (coming soon)</strike></option>
+            <option value="web"><strike>Web Projects (coming soon)</strike></option>
+        </select>
+    </div>
+    <audio id="birthday-audio" src="happy-birthday-334876.mp3"></audio>
+    <div id="birthday-message" style="display:none; text-align:center; margin-top:32px;">
+        <h2 style="color:#ff69b4; font-family:'Press Start 2P'cursive;">🎉 Happy Birthday Beslan 😊😊🎉</h2>
+        <p style="font-size:1.3em;">Wishing you an amazing year ahead!</p>
+    </div>
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                const loading = document.getElementById('loading-screen');
+                loading.style.opacity = 0;
+                setTimeout(() => loading.style.display = 'none', 500);
+            }, 5000); // 5 seconds
+        };
+    </script>
+    <script>
+        // Make the dropdown filter as you type
+        const searchBar = document.querySelector('.search-bar');
+        const courseSelect = document.querySelector('.course-select');
+        const allOptions = Array.from(courseSelect.options);
+        const dynamicHint = document.getElementById('dynamic-hint');
+
+        function updateHint() {
+            const firstOption = courseSelect.options[1];
+            if (searchBar.value && firstOption) {
+                dynamicHint.innerHTML = `Press <b>Enter</b> to go to <b>${firstOption.text}</b>`;
+            } else {
+                dynamicHint.innerHTML = '';
+            }
+        }
+
+        searchBar.addEventListener('input', function() {
+            const search = this.value.toLowerCase();
+            courseSelect.innerHTML = '';
+            // Always add the default option
+            courseSelect.appendChild(allOptions[0]);
+            allOptions.slice(1).forEach(option => {
+                if (option.text.toLowerCase().includes(search)) {
+                    courseSelect.appendChild(option);
+                }
+            });
+            updateHint();
+        });
+
+        searchBar.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const input = searchBar.value.trim().toLowerCase();
+                if (input === 'beslan') {
+                    // Show birthday message and play song
+                    document.getElementById('birthday-message').style.display = 'block';
+                    document.querySelector('.search-container').style.display = 'none';
+                    document.getElementById('birthday-audio').play();
+                    dynamicHint.innerHTML = '';
+                    return;
+                }
+                // Find the first visible course option (not the default)
+                const firstOption = courseSelect.options[1];
+                if (firstOption) {
+                    courseSelect.value = firstOption.value;
+                    courseSelect.dispatchEvent(new Event('change'));
+                }
+            }
+        });
+
+        courseSelect.addEventListener('change', function() {
+            if (this.value === 'html') window.location.href = 'course.html';
+            // Add more if you have other course files, e.g.:
+            // if (this.value === 'css') window.location.href = 'css-course.html';
+            // if (this.value === 'js') window.location.href = 'js-course.html';
+            // if (this.value === 'web') window.location.href = 'web-projects.html';
+        });
+
+        // Show hint on page load if needed
+        updateHint();
+    </script>
+</body>
+</html>
