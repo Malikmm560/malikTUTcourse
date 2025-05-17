@@ -131,7 +131,7 @@
     const googleButton = document.querySelector('.oauthButton');
     googleButton.addEventListener('click', () => {
       google.accounts.id.initialize({
-        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+        client_id: '806213218217-i3m9ul9r2ej97qjad1uukp65tmimtvrp.apps.googleusercontent.com',
         callback: (response) => {
           // Decode JWT to get user info
           const base64Url = response.credential.split('.')[1];
