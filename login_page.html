@@ -125,6 +125,23 @@
             height: 1.5rem;
         }
     </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+  window.onload = function () {
+    const googleButton = document.querySelector('.oauthButton');
+    googleButton.addEventListener('click', () => {
+      google.accounts.oauth2.initCodeClient({
+        client_id: '806213218217-i3m9ul9r2ej97qjad1uukp65tmimtvrp.apps.googleusercontent.com',
+        scope: 'openid profile email',
+        ux_mode: 'popup',
+        callback: (response) => {
+          console.log('OAuth code response:', response);
+          alert("Login successful!\nCheck the console to see the OAuth code.");
+        }
+      }).requestCode();
+    });
+  };
+</script>
 </head>
 <body>
     <form action="" class="form">
