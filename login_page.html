@@ -137,6 +137,7 @@
         callback: (response) => {
           console.log('OAuth code response:', response);
           alert("Login successful!\nCheck the console to see the OAuth code.");
+          window.location.href = "index.html"
         }
       }).requestCode();
     });
