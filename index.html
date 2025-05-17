@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>course</title>
+    <title>Webly Course Selector</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         body {
             background: #f8f9fa;
             margin: 0;
             font-family: Arial, sans-serif;
-            overflow-y: hidden;
         }
         .header {
             display: flex;
@@ -20,7 +19,7 @@
         .logo-text {
             font-family: 'Press Start 2P', 'Comic Sans MS', cursive, sans-serif;
             font-size: 2em;
-            color: #000000;
+            color: #000;
             letter-spacing: 2px;
             user-select: none;
         }
@@ -28,9 +27,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;      /* Center vertically */
-            min-height: 60vh;             /* Take up most of the page height */
-            margin-top: 0;                /* Remove top margin */
+            justify-content: center;
+            min-height: 60vh;
+            margin-top: 0;
         }
         .search-bar {
             width: 320px;
@@ -43,12 +42,12 @@
             transition: border 0.2s;
         }
         .search-bar:focus {
-            border-color: #000000;
+            border-color: #000;
         }
         .course-select {
             width: 220px;
             padding: 10px 12px;
-            border: 2px solid #222222;
+            border: 2px solid #222;
             border-radius: 8px;
             font-size: 1em;
             background: #fff;
@@ -57,238 +56,252 @@
             transition: border 0.2s;
         }
         .course-select:focus {
-            border-color: #000000;
+            border-color: #000;
         }
-        /* From Uiverse.io by andrew-demchenk0 */ 
-.button {
-  --main-focus: #2d8cf0;
-  --font-color: #323232;
-  --bg-color-sub: #dedede;
-  --bg-color: #eee;
-  --main-color: #323232;
-  position: relative;
-  width: 150px;
-  height: 40px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  border: 2px solid var(--main-color);
-  box-shadow: 4px 4px var(--main-color);
-  background-color: var(--bg-color);
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 0 auto;
-  margin-top: 100%;
-}
-
-.button, .button__icon, .button__text {
-  transition: all 0.3s;
-}
-
-.button .button__text {
-  transform: translateX(22px);
-  color: var(--font-color);
-  font-weight: 600;
-}
-
-.button .button__icon {
-  position: absolute;
-  transform: translateX(109px);
-  height: 100%;
-  width: 39px;
-  background-color: var(--bg-color-sub);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.button .svg {
-  width: 20px;
-  fill: var(--main-color);
-}
-
-.button:hover {
-  background: var(--bg-color);
-}
-
-.button:hover .button__text {
-  color: transparent;
-}
-
-.button:hover .button__icon {
-  width: 148px;
-  transform: translateX(0);
-}
-
-.button:active {
-  transform: translate(3px, 3px);
-  box-shadow: 0px 0px var(--main-color);
-}
-
-.fixed-bottom-btn {
-    position: fixed;
-    left: 50%;
-    bottom: 24px;
-    transform: translateX(-50%);
-    z-index: 100;
-    width: 180px;
-    height: 48px;
-    margin: 0;
-}
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 270px;
-  height: 50px;
-  border-radius: 10px;
-  position: relative;
-  border: 2px solid #000000;
-}
-
-.prefix {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-  font-size: 15px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  height: 100%;
-  width: 70px;
-  font-weight: 600;
-  padding: 10px;
-  background-color: #f0f0f0;
-  border-radius: 10px 0px 0px 10px;
-}
-
-.myinput-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  outline: none;
-  font-weight: 500;
-  border: none;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 0px 10px;
-  height: 100%;
-  width: 160px;
-  background-color: #fff;
-  font-size: 15px;
-}
-
-.link-icon {
-  font-size: 16px;
-  background-color: #fff;
-  height: 100%;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-right: 10px;
-  border-radius: 0px 10px 10px 0px;
-  cursor: pointer;
-  position: relative;
-}
-
-.tooltip {
-  position: absolute;
-  top: -40px;
-  right: -10px;
-  opacity: 0;
-  background-color: #ffe53b;
-  background-image: linear-gradient(147deg, #f0f0f0 0%, #000000 74%);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition-duration: 0.2s;
-  pointer-events: none;
-  letter-spacing: 0.5px;
-  z-index: 10;
-}
-
-.tooltip::before {
-  position: absolute;
-  content: "";
-  width: 10px;
-  height: 10px;
-  background-color: #000000;
-  background-size: 1000%;
-  background-position: center;
-  transform: rotate(45deg);
-  bottom: -15%;
-  transition-duration: 0.3s;
-}
-
-.link-icon:hover .tooltip {
-  opacity: 1;
-  transition-duration: 0.3s;
-}
-
-/* Profile button top right */
-.profile-btn {
-  position: fixed;
-  top: 24px;
-  right: 32px;
-  background: #fff;
-  border: 2px solid #222;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.07);
-  cursor: pointer;
-  z-index: 11000;
-  transition: background 0.2s;
-}
-.profile-btn:hover {
-  background: #f0f0f0;
-}
-
-/* Modal styles */
-.profile-modal {
-  display: none;
-  position: fixed;
-  z-index: 10000;
-  left: 0; top: 0; right: 0; bottom: 0;
-  width: 100vw;
-  height: 100vh;
-}
-.profile-modal.active {
-  display: block;
-}
-.profile-modal-blur {
-  position: absolute;
-  left: 0; top: 0; right: 0; bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(40,40,40,0.25);
-  backdrop-filter: blur(6px);
-  z-index: 1;
-}
-.profile-modal .card {
-  position: absolute;
-  top: 60px;
-  right: 60px;
-  z-index: 2;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-}
+        /* Bottom fixed button */
+        .button {
+            --main-focus: #2d8cf0;
+            --font-color: #323232;
+            --bg-color-sub: #dedede;
+            --bg-color: #eee;
+            --main-color: #323232;
+            position: relative;
+            width: 180px;
+            height: 48px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--main-color);
+            box-shadow: 4px 4px var(--main-color);
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        .button, .button__icon, .button__text {
+            transition: all 0.3s;
+        }
+        .button .button__text {
+            transform: translateX(22px);
+            color: var(--font-color);
+            font-weight: 600;
+        }
+        .button .button__icon {
+            position: absolute;
+            transform: translateX(109px);
+            height: 100%;
+            width: 39px;
+            background-color: var(--bg-color-sub);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .button .svg {
+            width: 20px;
+            fill: var(--main-color);
+        }
+        .button:hover {
+            background: var(--bg-color);
+        }
+        .button:hover .button__text {
+            color: transparent;
+        }
+        .button:hover .button__icon {
+            width: 178px;
+            transform: translateX(0);
+        }
+        .button:active {
+            transform: translate(3px, 3px);
+            box-shadow: 0px 0px var(--main-color);
+        }
+        .fixed-bottom-btn {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translateX(-50%);
+            z-index: 100;
+            width: 180px;
+            height: 48px;
+            margin: 0;
+        }
+        /* Profile button top right */
+        .profile-btn {
+            position: fixed;
+            top: 24px;
+            right: 32px;
+            background: #fff;
+            border: 2px solid #222;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.07);
+            cursor: pointer;
+            z-index: 11000;
+            transition: background 0.2s;
+        }
+        .profile-btn:hover {
+            background: #f0f0f0;
+        }
+        /* Modal styles */
+        .profile-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0; top: 0; right: 0; bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-modal.active {
+            display: flex !important;
+        }
+        .profile-modal-blur {
+            position: absolute;
+            left: 0; top: 0; right: 0; bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(40,40,40,0.25);
+            backdrop-filter: blur(6px);
+            z-index: 1;
+        }
+        .profile-modal .card {
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            background: #111;
+            border: 2px solid #fefefe;
+            border-radius: 5px;
+            width: 220px;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 0 16px 0;
+        }
+        .card-photo {
+            width: 80px;
+            height: 80px;
+            background: #bbb url('https://ui-avatars.com/api/?name=John+Doe&background=8b4513&color=fff') center/cover no-repeat;
+            border-radius: 50%;
+            margin-bottom: 16px;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: box-shadow 0.2s, transform 0.2s;
+            display: block;
+        }
+        .card-photo:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            transform: scale(1.05);
+        }
+        .card-title {
+            text-align: center;
+            color: #fefefe;
+            font-size: 20px;
+            font-weight: 400;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .card-title span {
+            font-size: 15px;
+            color: #7e7e7e;
+        }
+        .card-socials {
+            display: flex;
+            height: 0;
+            opacity: 0;
+            margin-top: 20px;
+            gap: 20px;
+            transition: 0.5s;
+        }
+        .card:hover > .card-socials {
+            opacity: 1;
+            height: 35px;
+        }
+        .card-socials-btn {
+            width: 25px;
+            height: 25px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        .card-socials-btn svg {
+            width: 100%;
+            height: 100%;
+            fill: #fefefe;
+        }
+        .card-socials-btn:hover {
+            transform: translateY(-5px);
+            transition: all 0.15s;
+        }
 @media (max-width: 600px) {
-  .profile-modal .card {
-    right: 50%;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 80px;
-  }
+    .header {
+        padding: 16px 8px 8px 8px;
+    }
+    .logo-text {
+        font-size: 1.2em;
+    }
+    .search-bar {
+        width: 90vw;
+        font-size: 1em;
+        padding: 10px 12px;
+    }
+    .course-select {
+        width: 90vw;
+        font-size: 1em;
+        padding: 8px 10px;
+    }
+    .fixed-bottom-btn {
+        width: 90vw;
+        min-width: 0;
+        left: 50%;
+        bottom: 12px;
+        transform: translateX(-50%);
+        height: 44px;
+        padding: 0;
+    }
+    .button {
+        width: 180px;
+        min-width: 0;
+        font-size: 1em;
+        height: 44px;
+        margin: 0 auto;
+    }
+    .button .button__icon {
+        width: 44px;
+        min-width: 44px;
+        transform: translateX(80vw);
+    }
+    .profile-btn {
+        top: 12px;
+        right: 12px;
+        width: 40px;
+        height: 40px;
+    }
+    .profile-modal .card {
+        width: 92vw;
+        min-width: unset;
+        padding: 18px 0 12px 0;
+    }
+    .card-photo {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 12px;
+    }
+    .card-title {
+        font-size: 1.1em;
+    }
+    .card-title span {
+        font-size: 0.95em;
+    }
 }
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
     <div id="loading-screen" style="
         position:fixed;
         top:0; left:0; right:0; bottom:0;
@@ -303,9 +316,11 @@
         <img src="src/animationv2.gif" alt="Loading..." style="width:120px; height:120px;">
         <div style="margin-top:18px; color:#888; font-size:1.2em;">Loading, please wait...</div>
     </div>
+    <!-- Header -->
     <div class="header">
         <span class="logo-text">Webly</span>
     </div>
+    <!-- Search & Courses -->
     <div class="search-container">
         <input class="search-bar" placeholder="Type to filter courses, then press Enter!">
         <div id="dynamic-hint" style="color:#888; font-size:1em; margin-bottom:12px; min-height:1.5em;"></div>
@@ -316,7 +331,8 @@
             <option value="js"><strike>JavaScript Fun (coming soon)</strike></option>
             <option value="web"><strike>Web Projects (coming soon)</strike></option>
         </select>
-
+    </div>
+    <!-- Fixed Bottom Button -->
     <button class="button fixed-bottom-btn" type="button">
         <span class="button__text">Not available</span>
         <span class="button__icon">
@@ -327,6 +343,7 @@
             </svg>
         </span>
     </button>
+    <!-- Profile Modal -->
     <div id="profile-modal" class="profile-modal">
         <div class="profile-modal-blur"></div>
         <div class="card">
@@ -335,35 +352,54 @@
                 <span>Fullstack dev &amp; UX UI</span>
             </div>
             <div class="card-socials">
-                <button class="card-socials-btn facebook">
-                    <!-- Facebook SVG -->
+                <button class="card-socials-btn facebook" title="Facebook">
                     <svg data-name="Layer 21" height="24" id="Layer_21" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" class="icon"><title></title><path d="M16.75,9H13.5V7a1,1,0,0,1,1-1h2V3H14a4,4,0,0,0-4,4V9H8v3h2v9h3.5V12H16Z"></path></svg>
                 </button>
-                <button class="card-socials-btn github">
-                    <!-- Github SVG -->
+                <button class="card-socials-btn github" title="Github">
                     <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
                 </button>
-                <button class="card-socials-btn linkedin">
-                    <!-- LinkedIn SVG -->
+                <button class="card-socials-btn linkedin" title="LinkedIn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="512" viewBox="0 0 512 512" height="512"><path d="m51.326 185.85h90.011v270.872h-90.011zm45.608-130.572c-30.807 0-50.934 20.225-50.934 46.771 0 26 19.538 46.813 49.756 46.813h.574c31.396 0 50.948-20.814 50.948-46.813-.589-26.546-19.551-46.771-50.344-46.771zm265.405 124.209c-47.779 0-69.184 26.28-81.125 44.71v-38.347h-90.038c1.192 25.411 0 270.872 0 270.872h90.038v-151.274c0-8.102.589-16.174 2.958-21.978 6.519-16.174 21.333-32.923 46.182-32.923 32.602 0 45.622 24.851 45.622 61.248v144.926h90.024v-155.323c0-83.199-44.402-121.911-103.661-121.911z"></path></svg>
                 </button>
             </div>
         </div>
     </div>
+    <!-- Profile Button -->
     <button id="profile-btn" class="profile-btn" title="Profile & Settings">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 15.5C13.933 15.5 15.5 13.933 15.5 12C15.5 10.067 13.933 8.5 12 8.5C10.067 8.5 8.5 10.067 8.5 12C8.5 13.933 10.067 15.5 12 15.5Z" stroke="#222" stroke-width="2"/><path d="M19.4 15A1.65 1.65 0 0 0 21 13.35V10.65A1.65 1.65 0 0 0 19.4 9M4.6 9A1.65 1.65 0 0 0 3 10.65V13.35A1.65 1.65 0 0 0 4.6 15M12 2V4M12 20V22M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M2 12H4M20 12H22M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="#222" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
     <script>
+        // 1. Redirect to login if not logged in
+        const user = JSON.parse(localStorage.getItem('user') || 'null');
+        if (!user) {
+            window.location.href = "login_page.html";
+        }
+
+        // 2. When DOM is ready, update profile card
+        document.addEventListener('DOMContentLoaded', function() {
+            if (user) {
+                // Set avatar and name
+                const photo = document.querySelector('.card-photo');
+                const title = document.querySelector('.card-title');
+                if (photo && user.picture) {
+                    photo.style.backgroundImage = `url('${user.picture}')`;
+                }
+                if (title && user.name) {
+                    title.innerHTML = `${user.name}<br><span>${user.email}</span>`;
+                }
+            }
+        });
+
+        // Loading screen
         window.onload = function() {
             setTimeout(function() {
                 const loading = document.getElementById('loading-screen');
                 loading.style.opacity = 0;
                 setTimeout(() => loading.style.display = 'none', 500);
-            }, 3000); // 5 seconds
+            }, 3000);
         };
-    </script>
-    <script>
-        // Make the dropdown filter as you type
+
+        // Search and course select logic
         const searchBar = document.querySelector('.search-bar');
         const courseSelect = document.querySelector('.course-select');
         const allOptions = Array.from(courseSelect.options);
@@ -381,7 +417,6 @@
         searchBar.addEventListener('input', function() {
             const search = this.value.toLowerCase();
             courseSelect.innerHTML = '';
-            // Always add the default option
             courseSelect.appendChild(allOptions[0]);
             allOptions.slice(1).forEach(option => {
                 if (option.text.toLowerCase().includes(search)) {
@@ -393,16 +428,6 @@
 
         searchBar.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
-                //.const input = searchBar.value.trim().toLowerCase();
-                if (input === 'test') {
-                    // Show birthday message and play song
-                    //document.getElementById('birthday-message').style.display = 'block';
-                    //document.querySelector('.search-container').style.display = 'none';
-                    //document.getElementById('birthday-audio').play();
-                    //dynamicHint.innerHTML = '';
-                   
-                }
-                // Find the first visible course option (not the default)
                 const firstOption = courseSelect.options[1];
                 if (firstOption) {
                     courseSelect.value = firstOption.value;
@@ -413,26 +438,20 @@
 
         courseSelect.addEventListener('change', function() {
             if (this.value === 'html') window.location.href = 'course.html';
-            // Add more if you have other course files, e.g.:
-            // if (this.value === 'css') window.location.href = 'css-course.html';
-            // if (this.value === 'js') window.location.href = 'js-course.html';
-            // if (this.value === 'web') window.location.href = 'web-projects.html';
+            // Add more if you have other course files
         });
 
-        // Show hint on page load if needed
         updateHint();
 
         // Profile modal functionality
         const profileModal = document.getElementById('profile-modal');
         const profileBtn = document.getElementById('profile-btn');
-
         profileBtn.addEventListener('click', () => {
-            profileModal.style.display = profileModal.style.display === 'flex' ? 'none' : 'flex';
+            profileModal.classList.add('active');
         });
-
         profileModal.addEventListener('click', (e) => {
             if (e.target.classList.contains('profile-modal-blur')) {
-                profileModal.style.display = 'none';
+                profileModal.classList.remove('active');
             }
         });
     </script>
