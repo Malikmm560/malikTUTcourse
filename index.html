@@ -10,6 +10,7 @@
             background: #f8f9fa;
             margin: 0;
             font-family: Arial, sans-serif;
+            overflow-y: hidden;
         }
         .header {
             display: flex;
@@ -58,6 +59,175 @@
         .course-select:focus {
             border-color: #000000;
         }
+        /* From Uiverse.io by andrew-demchenk0 */ 
+.button {
+  --main-focus: #2d8cf0;
+  --font-color: #323232;
+  --bg-color-sub: #dedede;
+  --bg-color: #eee;
+  --main-color: #323232;
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  background-color: var(--bg-color);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 100%;
+}
+
+.button, .button__icon, .button__text {
+  transition: all 0.3s;
+}
+
+.button .button__text {
+  transform: translateX(22px);
+  color: var(--font-color);
+  font-weight: 600;
+}
+
+.button .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: var(--bg-color-sub);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button .svg {
+  width: 20px;
+  fill: var(--main-color);
+}
+
+.button:hover {
+  background: var(--bg-color);
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0px 0px var(--main-color);
+}
+
+.fixed-bottom-btn {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    z-index: 100;
+    width: 180px;
+    height: 48px;
+    margin: 0;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 270px;
+  height: 50px;
+  border-radius: 10px;
+  position: relative;
+  border: 2px solid #000000;
+}
+
+.prefix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 15px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+  width: 70px;
+  font-weight: 600;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 10px 0px 0px 10px;
+}
+
+.myinput-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  font-weight: 500;
+  border: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0px 10px;
+  height: 100%;
+  width: 160px;
+  background-color: #fff;
+  font-size: 15px;
+}
+
+.link-icon {
+  font-size: 16px;
+  background-color: #fff;
+  height: 100%;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 10px;
+  border-radius: 0px 10px 10px 0px;
+  cursor: pointer;
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  top: -40px;
+  right: -10px;
+  opacity: 0;
+  background-color: #ffe53b;
+  background-image: linear-gradient(147deg, #f0f0f0 0%, #000000 74%);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.2s;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+  z-index: 10;
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #000000;
+  background-size: 1000%;
+  background-position: center;
+  transform: rotate(45deg);
+  bottom: -15%;
+  transition-duration: 0.3s;
+}
+
+.link-icon:hover .tooltip {
+  opacity: 1;
+  transition-duration: 0.3s;
+}
+
     </style>
 </head>
 <body>
@@ -76,10 +246,10 @@
         <div style="margin-top:18px; color:#888; font-size:1.2em;">Loading, please wait...</div>
     </div>
     <div class="header">
-        <span class="logo-text">malikTUT</span>
+        <span class="logo-text">Webly</span>
     </div>
     <div class="search-container">
-        <input class="search-bar" type="text" placeholder="Type to filter courses, then press Enter!">
+        <input class="search-bar" placeholder="Type to filter courses, then press Enter!">
         <div id="dynamic-hint" style="color:#888; font-size:1em; margin-bottom:12px; min-height:1.5em;"></div>
         <select class="course-select">
             <option value="">Choose a course</option>
@@ -94,6 +264,16 @@
         <h2 style="color:#ff69b4; font-family:'Press Start 2P'cursive;">🎉 Happy Birthday Beslan 😊😊🎉</h2>
         <p style="font-size:1.3em;">Wishing you an amazing year ahead!</p>
     </div>
+    <button class="button fixed-bottom-btn" type="button">
+        <span class="button__text">Not available</span>
+        <span class="button__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" class="svg">
+                <path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path>
+                <path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path>
+                <path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path>
+            </svg>
+        </span>
+    </button>
     <script>
         window.onload = function() {
             setTimeout(function() {
