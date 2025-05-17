@@ -280,7 +280,7 @@
                 const loading = document.getElementById('loading-screen');
                 loading.style.opacity = 0;
                 setTimeout(() => loading.style.display = 'none', 500);
-            }, 5000); // 5 seconds
+            }, 3000); // 5 seconds
         };
     </script>
     <script>
@@ -314,14 +314,14 @@
 
         searchBar.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
-                const input = searchBar.value.trim().toLowerCase();
-                if (input === 'beslan') {
+                //.const input = searchBar.value.trim().toLowerCase();
+                if (input === 'test') {
                     // Show birthday message and play song
-                    document.getElementById('birthday-message').style.display = 'block';
-                    document.querySelector('.search-container').style.display = 'none';
-                    document.getElementById('birthday-audio').play();
-                    dynamicHint.innerHTML = '';
-                    return;
+                    //document.getElementById('birthday-message').style.display = 'block';
+                    //document.querySelector('.search-container').style.display = 'none';
+                    //document.getElementById('birthday-audio').play();
+                    //dynamicHint.innerHTML = '';
+                   
                 }
                 // Find the first visible course option (not the default)
                 const firstOption = courseSelect.options[1];
